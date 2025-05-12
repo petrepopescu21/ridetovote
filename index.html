@@ -225,16 +225,17 @@
               <div class="h-px bg-gray-300 dark:bg-gray-700 w-24"></div>
             </div>
 
-            <div class="relative">
+            <!-- Desktop timeline -->
+            <div class="relative hidden md:block">
               <!-- Timeline line -->
               <div
-                class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-200 dark:bg-gray-700"
+                class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-200 dark:bg-gray-700"
               ></div>
 
               <div class="space-y-12 relative">
                 <!-- Step 1 -->
-                <div class="flex flex-col md:flex-row items-center">
-                  <div class="flex-1 md:pr-8 md:text-right mb-4 md:mb-0">
+                <div class="flex items-center">
+                  <div class="flex-1 pr-8 text-right">
                     <h3
                       class="text-xl font-semibold mb-2"
                       :style="{ color: colors.accentColor }"
@@ -247,26 +248,24 @@
                     </p>
                   </div>
                   <div
-                    class="md:absolute md:left-1/2 md:transform md:-translate-x-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold shadow-xl"
+                    class="absolute left-1/2 transform -translate-x-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold shadow-xl"
                     :style="{ backgroundColor: colors.accentColor }"
                   >
                     1
                   </div>
-                  <div class="flex-1 md:pl-8 md:text-left"></div>
+                  <div class="flex-1 pl-8 text-left"></div>
                 </div>
 
                 <!-- Step 2 -->
-                <div class="flex flex-col md:flex-row items-center">
+                <div class="flex items-center">
+                  <div class="flex-1 pr-8 text-right"></div>
                   <div
-                    class="flex-1 md:pr-8 md:text-right order-1 md:order-1 mb-4 md:mb-0"
-                  ></div>
-                  <div
-                    class="md:absolute md:left-1/2 md:transform md:-translate-x-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold shadow-xl order-2 md:order-2"
+                    class="absolute left-1/2 transform -translate-x-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold shadow-xl"
                     :style="{ backgroundColor: colors.accentColor }"
                   >
                     2
                   </div>
-                  <div class="flex-1 md:pl-8 md:text-left order-3 md:order-3">
+                  <div class="flex-1 pl-8 text-left">
                     <h3
                       class="text-xl font-semibold mb-2"
                       :style="{ color: colors.accentColor }"
@@ -281,8 +280,8 @@
                 </div>
 
                 <!-- Step 3 -->
-                <div class="flex flex-col md:flex-row items-center">
-                  <div class="flex-1 md:pr-8 md:text-right mb-4 md:mb-0">
+                <div class="flex items-center">
+                  <div class="flex-1 pr-8 text-right">
                     <h3
                       class="text-xl font-semibold mb-2"
                       :style="{ color: colors.accentColor }"
@@ -295,26 +294,24 @@
                     </p>
                   </div>
                   <div
-                    class="md:absolute md:left-1/2 md:transform md:-translate-x-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold shadow-xl"
+                    class="absolute left-1/2 transform -translate-x-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold shadow-xl"
                     :style="{ backgroundColor: colors.accentColor }"
                   >
                     3
                   </div>
-                  <div class="flex-1 md:pl-8 md:text-left"></div>
+                  <div class="flex-1 pl-8 text-left"></div>
                 </div>
 
                 <!-- Step 4 -->
-                <div class="flex flex-col md:flex-row items-center">
+                <div class="flex items-center">
+                  <div class="flex-1 pr-8 text-right"></div>
                   <div
-                    class="flex-1 md:pr-8 md:text-right order-1 md:order-1 mb-4 md:mb-0"
-                  ></div>
-                  <div
-                    class="md:absolute md:left-1/2 md:transform md:-translate-x-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold shadow-xl order-2 md:order-2"
+                    class="absolute left-1/2 transform -translate-x-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold shadow-xl"
                     :style="{ backgroundColor: colors.accentColor }"
                   >
                     4
                   </div>
-                  <div class="flex-1 md:pl-8 md:text-left order-3 md:order-3">
+                  <div class="flex-1 pl-8 text-left">
                     <h3
                       class="text-xl font-semibold mb-2"
                       :style="{ color: colors.accentColor }"
@@ -326,6 +323,105 @@
                       la secția lui
                     </p>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mobile timeline - optimized with numbers before text -->
+            <div class="md:hidden space-y-8">
+              <!-- Step 1 -->
+              <div class="flex items-start">
+                <div class="mr-4">
+                  <div
+                    class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shadow-md"
+                    :style="{ backgroundColor: colors.accentColor }"
+                  >
+                    1
+                  </div>
+                </div>
+                <div>
+                  <h3
+                    class="text-xl font-semibold mb-2"
+                    :style="{ color: colors.accentColor }"
+                  >
+                    Înregistrează-te
+                  </h3>
+                  <p class="dark:text-gray-300">
+                    Înregistrează-te folosind formularul și specifică secția de
+                    votare la care trebuie să ajungi
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="flex items-start">
+                <div class="mr-4">
+                  <div
+                    class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shadow-md"
+                    :style="{ backgroundColor: colors.accentColor }"
+                  >
+                    2
+                  </div>
+                </div>
+                <div>
+                  <h3
+                    class="text-xl font-semibold mb-2"
+                    :style="{ color: colors.accentColor }"
+                  >
+                    Planificarea Traseului
+                  </h3>
+                  <p class="dark:text-gray-300">
+                    Noi vom planifica un traseu care să includă toate secțiile
+                    de votare ale participanților
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="flex items-start">
+                <div class="mr-4">
+                  <div
+                    class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shadow-md"
+                    :style="{ backgroundColor: colors.accentColor }"
+                  >
+                    3
+                  </div>
+                </div>
+                <div>
+                  <h3
+                    class="text-xl font-semibold mb-2"
+                    :style="{ color: colors.accentColor }"
+                  >
+                    Întâlnire
+                  </h3>
+                  <p class="dark:text-gray-300">
+                    În ziua evenimentului, ne întâlnim la punctul de întâlnire
+                    și pedalăm împreună către secțiile de votare
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="flex items-start">
+                <div class="mr-4">
+                  <div
+                    class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shadow-md"
+                    :style="{ backgroundColor: colors.accentColor }"
+                  >
+                    4
+                  </div>
+                </div>
+                <div>
+                  <h3
+                    class="text-xl font-semibold mb-2"
+                    :style="{ color: colors.accentColor }"
+                  >
+                    Votează
+                  </h3>
+                  <p class="dark:text-gray-300">
+                    Fiecare participant va avea ocazia să voteze când ajungem la
+                    secția lui
+                  </p>
                 </div>
               </div>
             </div>
