@@ -192,7 +192,23 @@ async function processCSV() {
     }
     
     // Read existing results if output file exists
-    const existingResults = readExistingJson(outputFile);
+    let existingResults = [];
+    if (fs.existsSync(outputFile)) {
+      try {
+        const fileContent = fs.readFileSync(outputFile, 'utf8');
+        existingResults = JSON.parse(fileContent);
+        // Ensure existingResults is an array
+        if (!Array.isArray(existingResults)) {
+          console.error('Warning: Output file does not contain an array. Starting with empty array.');
+          existingResults = [];
+        }
+      } catch (error) {
+        console.error(`Error reading existing JSON file: ${error.message}`);
+        console.error('Starting with empty results array');
+        existingResults = [];
+      }
+    }
+    
     console.log(`Found ${existingResults.length} existing results in output file`);
     
     // Create a map of existing results for quick lookup
@@ -289,7 +305,11 @@ async function processCSV() {
       existingResultsMap.set(id, result);
       
       // Immediately write results after each address is processed
-      const updatedResults = [...existingResults.filter(r => r.id !== id), result];
+      // Properly merge with existing results
+      // First, remove any existing record with this ID (if present)
+      const filteredExistingResults = existingResults.filter(r => r.id !== id);
+      // Then append the new result
+      const updatedResults = [...filteredExistingResults, result];
       fs.writeFileSync(outputFile, JSON.stringify(updatedResults, null, 2));
       console.log(`  Updated output file with ID ${id}`);
     }
