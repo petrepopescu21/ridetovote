@@ -3,13 +3,15 @@
     class="sticky top-0 z-50 backdrop-filter backdrop-blur-lg bg-opacity-70"
     :style="{ backgroundColor: currentColors.bgColor, color: currentColors.textColor }"
   >
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <div
+      class="container mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
+    >
       <div class="flex items-center space-x-2">
         <span :style="{ color: currentColors.secondaryColor }">
           Ride to Vote nu este o marcă înregistrată și nu este asociată cu niciun partid politic.
         </span>
       </div>
-      <div class="flex items-center space-x-4">
+      <div class="flex items-center space-x-4 text-center md:text-left">
         Grafică de&nbsp;
         <a href="https://www.instagram.com/bogdan.png/" target="_blank"
           ><i class="fa-brands fa-instagram"></i>
