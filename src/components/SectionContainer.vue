@@ -1,6 +1,6 @@
 // SectionContainer.vue - Reusable section container with title
 <template>
-  <div class="mb-16 pt-1">
+  <div class="mb-16">
     <div class="flex items-center justify-center mb-16">
       <h2 class="text-2xl font-bold mx-4" :style="{ color: colors.altAccentColor }">
         {{ title }}
