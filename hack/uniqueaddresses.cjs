@@ -28,7 +28,7 @@ async function geocode(rawAddress) {
     const data = res.data
     if (data.status === 'OK' && data.results.length) {
       const { lat, lng } = data.results[0].geometry.location
-      console.log(`✅  OK: "${rawAddress}" → ${lat},${lng}`)
+      console.log(`✅  OK: ${rawAddress} → ${lat},${lng}`)
       return { lat, lon: lng }
     } else {
       // Log full API response for errors or zero results
@@ -36,9 +36,9 @@ async function geocode(rawAddress) {
         `❌  Geocode failed for ${rawAddress} - status: ${data.status}${data.error_message ? `, error_message: ${data.error_message}` : ''} - full response: ${JSON.stringify(data)}`,
       )
     }
-    console.warn(`⚠️  NO RESULTS for "${rawAddress}" (status: ${data.status})`)
   } catch (err) {
-    console.error(`❌  Geocode error for "${rawAddress}":`, err.message)
+    // Log entire error object if request fails
+    console.error(`❌  Geocode error for ${rawAddress} -`, err)
   }
   return { lat: null, lon: null }
 }
@@ -106,6 +106,12 @@ async function geocode(rawAddress) {
     console.log(` → Raw Address: ${rawAddr}`)
 
     const { lat, lon } = await geocode(rawAddr)
+
+    // skip entries without valid coordinates
+    if (lat == null || lon == null) {
+      console.log(`⚠️  Skipping ID ${id} due to missing coordinates`)
+      continue
+    }
 
     const entry = { id, address: rawAddr, latitude: lat, longitude: lon }
 
