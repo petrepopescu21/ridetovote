@@ -13,7 +13,7 @@
     <div class="container mx-auto px-6 py-16 relative z-10">
       <div class="text-center">
         <div class="flex items-center justify-center mb-8">
-          <img
+          <!-- <img
             v-if="darkMode"
             ref="logo"
             src="../assets/logo-light.png"
@@ -26,7 +26,8 @@
             src="../assets/logo-dark.png"
             alt="Ride to Vote"
             class="max-w-full md:max-w-2xl lg:max-w-3xl"
-          />
+          /> -->
+          <img :src="logo" alt="My image" />
         </div>
         <p
           class="animate__animated animate__fadeInUp text-xl md:text-2xl font-light mb-8 text-white opacity-90"
@@ -52,7 +53,15 @@
 </template>
 
 <script>
+import Logo from '../assets/header-site_light.svg?url'
+import LogoDark from '../assets/header-site_dark.svg?url'
+
 export default {
+  computed: {
+    logo() {
+      return !this.darkMode ? Logo : LogoDark
+    },
+  },
   name: 'HeroSection',
   props: {
     colors: {
