@@ -11,10 +11,7 @@
         </span>
       </div>
       <div class="flex items-center space-x-4">
-        <button
-          @click="$emit('toggle-dark-mode')"
-          class="p-2 rounded-full hover:bg-opacity-20 hover:bg-gray-700"
-        >
+        <button @click="$emit('toggle-dark-mode')" class="p-2 rounded-full hover:bg-opacity-20">
           <i class="fas" :class="darkMode ? 'fa-sun' : 'fa-moon'"></i>
         </button>
       </div>

@@ -52,7 +52,7 @@
             :number="step.number"
             :title="step.title"
             :description="step.description"
-            :accentColor="currentColors.accentColor"
+            :colors="currentColors"
           />
         </div>
       </SectionContainer>

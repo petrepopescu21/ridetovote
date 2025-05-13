@@ -4,16 +4,16 @@
     <div class="mr-4">
       <div
         class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shadow-md"
-        :style="{ backgroundColor: accentColor }"
+        :style="{ backgroundColor: colors.primaryColor }"
       >
         {{ number }}
       </div>
     </div>
     <div>
-      <h3 class="text-xl font-semibold mb-2" :style="{ color: accentColor }">
+      <h3 class="text-xl font-semibold mb-2" :style="{ color: colors.primaryColor }">
         {{ title }}
       </h3>
-      <p class="dark:text-gray-300" v-html="description"></p>
+      <p :style="{ color: colors.textColor }" v-html="description"></p>
     </div>
   </div>
 </template>
@@ -34,8 +34,8 @@ export default {
       type: String,
       required: true,
     },
-    accentColor: {
-      type: String,
+    colors: {
+      type: Object,
       required: true,
     },
   },

@@ -12,20 +12,20 @@
     </div>
     <div class="container mx-auto px-6 py-16 relative z-10">
       <div class="text-center">
-        <div class="flex items-center justify-center">
+        <div class="flex items-center justify-center mb-8">
           <img
             v-if="darkMode"
             ref="logo"
             src="../assets/logo-light.png"
             alt="Ride to Vote"
-            class="max-w-3xl mb-4"
+            class="max-w-full md:max-w-2xl lg:max-w-3xl"
           />
           <img
             v-if="!darkMode"
             ref="logo"
             src="../assets/logo-dark.png"
             alt="Ride to Vote"
-            class="max-w-3xl mb-4"
+            class="max-w-full md:max-w-2xl lg:max-w-3xl"
           />
         </div>
         <p

@@ -9,12 +9,12 @@ export const eventDetails = [
     icon: 'fas fa-map-marker-alt',
     title: 'Punct de întâlnire',
     description:
-      'Parcul Cișmigiu, intrarea dinspre Bulevardul Regina Elisabeta, lângă fântâna centrală',
+      'Punctul de întâlnire va fi anunțat cu câteva zile înainte de eveniment. Revino vineri aici pentru detalii.',
   },
   {
     icon: 'fas fa-clock',
     title: 'Ora',
-    description: '09:00 AM - ne organizăm și pornim la 09:30 AM',
+    description: 'La fel si ora de întâlnire. Vom updata pagina.',
   },
 ]
 
@@ -101,19 +101,19 @@ export const rules = [
 export const colors = {
   light: {
     primaryColor: '#0BD66B',
-    secondaryColor: '#482875',
+    secondaryColor: '#301754',
     accentColor: '#0BD66B',
-    altAccentColor: '#482875',
+    altAccentColor: '#301754',
     bgColor: '#ffffff',
-    textColor: '#2A0851',
+    textColor: '#230D3B',
     secondaryTextColor: '#FFFFFF',
   },
   dark: {
     primaryColor: '#0BD66B',
     secondaryColor: '#F2E9FF',
-    accentColor: '#482875',
+    accentColor: '#301754',
     altAccentColor: '#0BD66B',
-    bgColor: '#2A0851',
+    bgColor: '#230D3B',
     textColor: '#FFFFFF',
     secondaryTextColor: '#0bd66b',
   },
