@@ -13,34 +13,14 @@
     <div class="container mx-auto px-6 py-16 relative z-10">
       <div class="text-center">
         <div class="flex items-center justify-center mb-8">
-          <!-- <img
-            v-if="darkMode"
-            ref="logo"
-            src="../assets/logo-light.png"
-            alt="Ride to Vote"
-            class="max-w-full md:max-w-2xl lg:max-w-3xl"
-          />
-          <img
-            v-if="!darkMode"
-            ref="logo"
-            src="../assets/logo-dark.png"
-            alt="Ride to Vote"
-            class="max-w-full md:max-w-2xl lg:max-w-3xl"
-          /> -->
           <img :src="logo" alt="My image" />
         </div>
-        <p
-          class="animate__animated animate__fadeInUp text-xl md:text-2xl font-light mb-8 text-white opacity-90"
-          :style="{ color: colors.secondaryTextColor }"
-        >
-          Pedalează spre Vot
-        </p>
         <div class="animate__animated animate__fadeIn animate__delay-1s mx-auto max-w-3xl">
           <div
             class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-xl"
-            :style="{ backgroundColor: colors.secondaryColor }"
+            :style="{ backgroundColor: colors.bgColor }"
           >
-            <p class="text-lg" :style="{ color: colors.bgColor }">
+            <p class="text-lg" :style="{ color: colors.textColor }">
               Bine ai venit la inițiativa <strong>Ride to Vote</strong> - un eveniment ciclist
               prietenos care îmbină sportul cu implicarea civică. Ne propunem să mergem împreună cu
               bicicletele la secțiile de votare în ziua alegerilor prezidențiale.
