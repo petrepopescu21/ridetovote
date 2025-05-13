@@ -1,7 +1,6 @@
 // LocationMap.vue
 <template>
-  <div class="flex flex-col h-screen">
-    <!-- Map and Sidebar Container -->
+  <div class="flex flex-col h-150">
     <div class="flex flex-1 overflow-hidden">
       <!-- Map -->
       <div ref="mapContainer" class="flex-1"></div>

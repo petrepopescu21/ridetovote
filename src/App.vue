@@ -1,29 +1,21 @@
 <template>
   <!-- Navigation -->
-  <nav
-    class="sticky top-0 z-50 backdrop-filter backdrop-blur-lg bg-opacity-70"
-    :class="[darkMode ? 'bg-gray-900 bg-opacity-70' : 'bg-white bg-opacity-70']"
-  >
+  <nav class="sticky top-0 z-50 backdrop-filter backdrop-blur-lg bg-opacity-70"
+    :class="[darkMode ? 'bg-gray-900 bg-opacity-70' : 'bg-white bg-opacity-70']">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
       <div class="flex items-center space-x-2">
         <i class="fas fa-bicycle text-2xl" :style="{ color: colors.accentColor }"></i>
-        <span class="font-bold text-xl" style="font-family: 'Montserrat', sans-serif"
-          >Ride to Vote</span
-        >
+        <span class="font-bold text-xl" :style="{ color: colors.accentColor }"
+          style="font-family: 'Montserrat', sans-serif">Ride to Vote</span>
       </div>
       <div class="flex items-center space-x-4">
-        <button
-          @click="randomizeColors"
+        <button @click="randomizeColors"
           class="px-3 py-1 rounded-full text-white text-sm transition-all duration-300 hover:shadow-lg"
-          :style="{ backgroundColor: colors.accentColor }"
-        >
+          :style="{ backgroundColor: colors.accentColor }">
           <i class="fas fa-palette mr-1"></i> Schimbă Culorile
         </button>
-        <button
-          @click="toggleDarkMode"
-          class="p-2 rounded-full hover:bg-opacity-20"
-          :class="darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'"
-        >
+        <button :style="{ color: colors.accentColor }" @click="toggleDarkMode"
+          class="p-2 rounded-full hover:bg-opacity-20" :class="darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'">
           <i class="fas" :class="darkMode ? 'fa-sun' : 'fa-moon'"></i>
         </button>
       </div>
@@ -33,31 +25,22 @@
   <!-- Hero Section -->
   <header class="relative overflow-hidden" :style="{ backgroundColor: colors.primaryColor }">
     <div class="absolute inset-0 opacity-10">
-      <div
-        class="absolute inset-0"
-        style="
+      <div class="absolute inset-0" style="
           background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPgogICAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iNDAiIHkyPSIwIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMSIvPgogIDwvcGF0dGVybj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIiAvPgo8L3N2Zz4=');
           transform: scale(3);
-        "
-      ></div>
+        "></div>
     </div>
     <div class="container mx-auto px-6 py-16 relative z-10">
       <div class="text-center">
-        <h1
-          class="animate__animated animate__fadeInDown text-4xl md:text-6xl font-extrabold mb-2 text-white"
-          style="font-family: 'Montserrat', sans-serif"
-        >
+        <h1 class="animate__animated animate__fadeInDown text-4xl md:text-6xl font-extrabold mb-2 text-white"
+          style="font-family: 'Montserrat', sans-serif">
           Ride to Vote
         </h1>
-        <p
-          class="animate__animated animate__fadeInUp text-xl md:text-2xl font-light mb-8 text-white opacity-90"
-        >
+        <p class="animate__animated animate__fadeInUp text-xl md:text-2xl font-light mb-8 text-white opacity-90">
           Pedalează spre Vot
         </p>
         <div class="animate__animated animate__fadeIn animate__delay-1s mx-auto max-w-3xl">
-          <div
-            class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-xl bg-opacity-90 dark:bg-opacity-90"
-          >
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-xl bg-opacity-90 dark:bg-opacity-90">
             <p class="text-gray-700 dark:text-gray-300 text-lg">
               Bine ai venit la inițiativa <strong>Ride to Vote</strong> - un eveniment ciclist
               prietenos care îmbină sportul cu implicarea civică. Ne propunem să mergem împreună cu
@@ -69,10 +52,8 @@
     </div>
   </header>
   <div id="app" v-cloak :class="{ dark: darkMode }">
-    <div
-      :style="{ backgroundColor: colors.bgColor, color: colors.textColor }"
-      class="min-h-screen transition-all duration-500 ease-in-out"
-    >
+    <div :style="{ backgroundColor: colors.bgColor, color: colors.textColor }"
+      class="min-h-screen transition-all duration-500 ease-in-out">
       <main class="container mx-auto px-6 py-12">
         <!-- Event Details -->
         <div class="mb-16">
@@ -87,17 +68,11 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div
               class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform duration-300 hover:transform hover:scale-105"
-              :style="{ borderTop: '4px solid ' + colors.accentColor }"
-            >
+              :style="{ borderTop: '4px solid ' + colors.accentColor }">
               <div class="flex justify-center mb-4">
-                <div
-                  class="w-16 h-16 rounded-full flex items-center justify-center"
-                  :style="{ backgroundColor: colors.accentColor + '20' }"
-                >
-                  <i
-                    class="fas fa-calendar-day text-2xl"
-                    :style="{ color: colors.accentColor }"
-                  ></i>
+                <div class="w-16 h-16 rounded-full flex items-center justify-center"
+                  :style="{ backgroundColor: colors.accentColor + '20' }">
+                  <i class="fas fa-calendar-day text-2xl" :style="{ color: colors.accentColor }"></i>
                 </div>
               </div>
               <h3 class="text-lg font-semibold text-center mb-2">Data</h3>
@@ -106,17 +81,11 @@
 
             <div
               class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform duration-300 hover:transform hover:scale-105"
-              :style="{ borderTop: '4px solid ' + colors.accentColor }"
-            >
+              :style="{ borderTop: '4px solid ' + colors.accentColor }">
               <div class="flex justify-center mb-4">
-                <div
-                  class="w-16 h-16 rounded-full flex items-center justify-center"
-                  :style="{ backgroundColor: colors.accentColor + '20' }"
-                >
-                  <i
-                    class="fas fa-map-marker-alt text-2xl"
-                    :style="{ color: colors.accentColor }"
-                  ></i>
+                <div class="w-16 h-16 rounded-full flex items-center justify-center"
+                  :style="{ backgroundColor: colors.accentColor + '20' }">
+                  <i class="fas fa-map-marker-alt text-2xl" :style="{ color: colors.accentColor }"></i>
                 </div>
               </div>
               <h3 class="text-lg font-semibold text-center mb-2">Punct de întâlnire</h3>
@@ -128,13 +97,10 @@
 
             <div
               class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform duration-300 hover:transform hover:scale-105"
-              :style="{ borderTop: '4px solid ' + colors.accentColor }"
-            >
+              :style="{ borderTop: '4px solid ' + colors.accentColor }">
               <div class="flex justify-center mb-4">
-                <div
-                  class="w-16 h-16 rounded-full flex items-center justify-center"
-                  :style="{ backgroundColor: colors.accentColor + '20' }"
-                >
+                <div class="w-16 h-16 rounded-full flex items-center justify-center"
+                  :style="{ backgroundColor: colors.accentColor + '20' }">
                   <i class="fas fa-clock text-2xl" :style="{ color: colors.accentColor }"></i>
                 </div>
               </div>
@@ -159,26 +125,23 @@
           <!-- Desktop timeline -->
           <div class="relative hidden md:block">
             <!-- Timeline line -->
-            <div
-              class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-200 dark:bg-gray-700"
-            ></div>
+            <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-200 dark:bg-gray-700"></div>
 
             <div class="space-y-12 relative">
               <!-- Step 1 -->
               <div class="flex items-center">
                 <div class="flex-1 pr-8 text-right">
                   <h3 class="text-xl font-semibold mb-2" :style="{ color: colors.accentColor }">
-                    Înregistrează-te
+                    Înscrie-te
                   </h3>
                   <p class="dark:text-gray-300">
-                    Înregistrează-te folosind formularul și specifică secția de votare la care
-                    trebuie să ajungi
+                    Completează formularul și spune-ne la ce secție de votare vrei să ajungi. Ne asigurăm că drumul tău
+                    va fi perfect, inclus în circuit.
                   </p>
                 </div>
                 <div
                   class="absolute left-1/2 transform -translate-x-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold shadow-xl"
-                  :style="{ backgroundColor: colors.accentColor }"
-                >
+                  :style="{ backgroundColor: colors.accentColor }">
                   1
                 </div>
                 <div class="flex-1 pl-8 text-left"></div>
@@ -189,17 +152,17 @@
                 <div class="flex-1 pr-8 text-right"></div>
                 <div
                   class="absolute left-1/2 transform -translate-x-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold shadow-xl"
-                  :style="{ backgroundColor: colors.accentColor }"
-                >
+                  :style="{ backgroundColor: colors.accentColor }">
                   2
                 </div>
                 <div class="flex-1 pl-8 text-left">
                   <h3 class="text-xl font-semibold mb-2" :style="{ color: colors.accentColor }">
-                    Planificarea Traseului
+                    Planificăm traseul
                   </h3>
                   <p class="dark:text-gray-300">
-                    Noi vom planifica un traseu care să includă toate secțiile de votare ale
-                    participanților
+                    Ne ocupăm noi de traseu! Vom crea o rută care să te aducă în siguranță la secția ta de votare,
+                    ținând cont de toți participanții.<br />Acolo te așteptăm să votezi, apoi pornim către următoarea
+                    secție. It is about the journey together.
                   </p>
                 </div>
               </div>
@@ -208,17 +171,16 @@
               <div class="flex items-center">
                 <div class="flex-1 pr-8 text-right">
                   <h3 class="text-xl font-semibold mb-2" :style="{ color: colors.accentColor }">
-                    Întâlnire
+                    Ne întâlnim
                   </h3>
                   <p class="dark:text-gray-300">
-                    În ziua evenimentului, ne întâlnim la punctul de întâlnire și pedalăm împreună
-                    către secțiile de votare
+                    Pe 18 mai ne vedem la punctul de întâlnire și pornim împreună pe biciclete, într-o călătorie spre
+                    secțiile de votare.
                   </p>
                 </div>
                 <div
                   class="absolute left-1/2 transform -translate-x-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold shadow-xl"
-                  :style="{ backgroundColor: colors.accentColor }"
-                >
+                  :style="{ backgroundColor: colors.accentColor }">
                   3
                 </div>
                 <div class="flex-1 pl-8 text-left"></div>
@@ -229,16 +191,15 @@
                 <div class="flex-1 pr-8 text-right"></div>
                 <div
                   class="absolute left-1/2 transform -translate-x-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold shadow-xl"
-                  :style="{ backgroundColor: colors.accentColor }"
-                >
+                  :style="{ backgroundColor: colors.accentColor }">
                   4
                 </div>
                 <div class="flex-1 pl-8 text-left">
                   <h3 class="text-xl font-semibold mb-2" :style="{ color: colors.accentColor }">
-                    Votează
+                    Pedalăm și votăm
                   </h3>
                   <p class="dark:text-gray-300">
-                    Fiecare participant va avea ocazia să voteze când ajungem la secția lui
+                    Pentru că fiecare pas contează și fiecare pedală ne aduce mai aproape de schimbare.
                   </p>
                 </div>
               </div>
@@ -250,20 +211,18 @@
             <!-- Step 1 -->
             <div class="flex items-start">
               <div class="mr-4">
-                <div
-                  class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shadow-md"
-                  :style="{ backgroundColor: colors.accentColor }"
-                >
+                <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shadow-md"
+                  :style="{ backgroundColor: colors.accentColor }">
                   1
                 </div>
               </div>
               <div>
                 <h3 class="text-xl font-semibold mb-2" :style="{ color: colors.accentColor }">
-                  Înregistrează-te
+                  Înscrie-te
                 </h3>
                 <p class="dark:text-gray-300">
-                  Înregistrează-te folosind formularul și specifică secția de votare la care trebuie
-                  să ajungi
+                  Completează formularul și spune-ne la ce secție de votare vrei să ajungi. Ne asigurăm că drumul tău va
+                  fi perfect, inclus în circuit.
                 </p>
               </div>
             </div>
@@ -271,20 +230,19 @@
             <!-- Step 2 -->
             <div class="flex items-start">
               <div class="mr-4">
-                <div
-                  class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shadow-md"
-                  :style="{ backgroundColor: colors.accentColor }"
-                >
+                <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shadow-md"
+                  :style="{ backgroundColor: colors.accentColor }">
                   2
                 </div>
               </div>
               <div>
                 <h3 class="text-xl font-semibold mb-2" :style="{ color: colors.accentColor }">
-                  Planificarea Traseului
+                  Planificăm traseul
                 </h3>
                 <p class="dark:text-gray-300">
-                  Noi vom planifica un traseu care să includă toate secțiile de votare ale
-                  participanților
+                  Ne ocupăm noi de traseu! Vom crea o rută care să te aducă în siguranță la secția ta de votare, ținând
+                  cont de toți participanții.<br />Acolo te așteptăm să votezi, apoi pornim către următoarea secție. It
+                  is about the journey together.
                 </p>
               </div>
             </div>
@@ -292,20 +250,18 @@
             <!-- Step 3 -->
             <div class="flex items-start">
               <div class="mr-4">
-                <div
-                  class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shadow-md"
-                  :style="{ backgroundColor: colors.accentColor }"
-                >
+                <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shadow-md"
+                  :style="{ backgroundColor: colors.accentColor }">
                   3
                 </div>
               </div>
               <div>
                 <h3 class="text-xl font-semibold mb-2" :style="{ color: colors.accentColor }">
-                  Întâlnire
+                  Ne întâlnim
                 </h3>
                 <p class="dark:text-gray-300">
-                  În ziua evenimentului, ne întâlnim la punctul de întâlnire și pedalăm împreună
-                  către secțiile de votare
+                  Pe 18 mai ne vedem la punctul de întâlnire și pornim împreună pe biciclete, într-o călătorie spre
+                  secțiile de votare.
                 </p>
               </div>
             </div>
@@ -313,19 +269,17 @@
             <!-- Step 4 -->
             <div class="flex items-start">
               <div class="mr-4">
-                <div
-                  class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shadow-md"
-                  :style="{ backgroundColor: colors.accentColor }"
-                >
+                <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shadow-md"
+                  :style="{ backgroundColor: colors.accentColor }">
                   4
                 </div>
               </div>
               <div>
                 <h3 class="text-xl font-semibold mb-2" :style="{ color: colors.accentColor }">
-                  Votează
+                  Pedalăm și votăm
                 </h3>
                 <p class="dark:text-gray-300">
-                  Fiecare participant va avea ocazia să voteze când ajungem la secția lui
+                  Pentru că fiecare pas contează și fiecare pedală ne aduce mai aproape de schimbare.
                 </p>
               </div>
             </div>
@@ -335,27 +289,35 @@
         <!-- CTA Buttons -->
         <div class="mb-16 text-center">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSeiN0q8f4bmPmn1rGiltKxN0Qdd2donwy4vYaVxYQrhf-LQCw/viewform"
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeiN0q8f4bmPmn1rGiltKxN0Qdd2donwy4vYaVxYQrhf-LQCw/viewform"
               class="inline-block py-4 px-8 rounded-lg text-white font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
-              :style="{ backgroundColor: colors.accentColor }"
-            >
-              <i class="fas fa-user-plus mr-2"></i> ÎNREGISTREAZĂ-TE AICI
+              :style="{ backgroundColor: colors.accentColor }">
+              <i class="fas fa-user-plus mr-2"></i> ÎSCRIE-TE AICI
             </a>
 
-            <a
-              href="https://goo.gl/maps/YourPlannedRouteLink"
+            <a href="https://goo.gl/maps/YourPlannedRouteLink"
               class="inline-block py-4 px-8 rounded-lg font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
               :style="{
                 backgroundColor: colors.secondaryColor,
                 color: colors.textColorSecondary,
-              }"
-            >
+              }">
               <i class="fas fa-route mr-2"></i> VEZI TRASEUL
             </a>
           </div>
         </div>
-        <LocationMap />
+        <div class="mb-16">
+          <div class="flex items-center justify-center mb-8">
+            <div class="h-px bg-gray-300 dark:bg-gray-700 w-24"></div>
+            <h2 class="text-2xl font-bold mx-4" :style="{ color: colors.accentColor }">
+              Unde vom merge
+            </h2>
+            <div class="h-px bg-gray-300 dark:bg-gray-700 w-24"></div>
+          </div>
+          <p class="text-center mb-4 dark:text-gray-300">
+            Bla bla aici s-a inscris lumea pana acum
+          </p>
+          <LocationMap />
+        </div>
 
         <!-- Rules -->
         <div class="mb-16">
@@ -368,16 +330,12 @@
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div
-              class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md"
-              :style="{ borderLeft: '4px solid ' + colors.accentColor }"
-            >
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md"
+              :style="{ borderLeft: '4px solid ' + colors.accentColor }">
               <div class="flex items-start">
                 <div class="mr-4">
-                  <div
-                    class="w-10 h-10 rounded-full flex items-center justify-center"
-                    :style="{ backgroundColor: colors.accentColor + '20' }"
-                  >
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center"
+                    :style="{ backgroundColor: colors.accentColor + '20' }">
                     <i class="fas fa-helmet-safety" :style="{ color: colors.accentColor }"></i>
                   </div>
                 </div>
@@ -390,16 +348,12 @@
               </div>
             </div>
 
-            <div
-              class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md"
-              :style="{ borderLeft: '4px solid ' + colors.accentColor }"
-            >
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md"
+              :style="{ borderLeft: '4px solid ' + colors.accentColor }">
               <div class="flex items-start">
                 <div class="mr-4">
-                  <div
-                    class="w-10 h-10 rounded-full flex items-center justify-center"
-                    :style="{ backgroundColor: colors.accentColor + '20' }"
-                  >
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center"
+                    :style="{ backgroundColor: colors.accentColor + '20' }">
                     <i class="fas fa-users" :style="{ color: colors.accentColor }"></i>
                   </div>
                 </div>
@@ -412,16 +366,12 @@
               </div>
             </div>
 
-            <div
-              class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md"
-              :style="{ borderLeft: '4px solid ' + colors.accentColor }"
-            >
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md"
+              :style="{ borderLeft: '4px solid ' + colors.accentColor }">
               <div class="flex items-start">
                 <div class="mr-4">
-                  <div
-                    class="w-10 h-10 rounded-full flex items-center justify-center"
-                    :style="{ backgroundColor: colors.accentColor + '20' }"
-                  >
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center"
+                    :style="{ backgroundColor: colors.accentColor + '20' }">
                     <i class="fas fa-water" :style="{ color: colors.accentColor }"></i>
                   </div>
                 </div>
@@ -434,16 +384,12 @@
               </div>
             </div>
 
-            <div
-              class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md"
-              :style="{ borderLeft: '4px solid ' + colors.accentColor }"
-            >
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md"
+              :style="{ borderLeft: '4px solid ' + colors.accentColor }">
               <div class="flex items-start">
                 <div class="mr-4">
-                  <div
-                    class="w-10 h-10 rounded-full flex items-center justify-center"
-                    :style="{ backgroundColor: colors.accentColor + '20' }"
-                  >
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center"
+                    :style="{ backgroundColor: colors.accentColor + '20' }">
                     <i class="fas fa-handshake" :style="{ color: colors.accentColor }"></i>
                   </div>
                 </div>
@@ -456,16 +402,12 @@
               </div>
             </div>
 
-            <div
-              class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md"
-              :style="{ borderLeft: '4px solid ' + colors.accentColor }"
-            >
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md"
+              :style="{ borderLeft: '4px solid ' + colors.accentColor }">
               <div class="flex items-start">
                 <div class="mr-4">
-                  <div
-                    class="w-10 h-10 rounded-full flex items-center justify-center"
-                    :style="{ backgroundColor: colors.accentColor + '20' }"
-                  >
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center"
+                    :style="{ backgroundColor: colors.accentColor + '20' }">
                     <i class="fas fa-wrench" :style="{ color: colors.accentColor }"></i>
                   </div>
                 </div>
@@ -478,21 +420,17 @@
               </div>
             </div>
 
-            <div
-              class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md"
-              :style="{ borderLeft: '4px solid ' + colors.accentColor }"
-            >
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md"
+              :style="{ borderLeft: '4px solid ' + colors.accentColor }">
               <div class="flex items-start">
                 <div class="mr-4">
-                  <div
-                    class="w-10 h-10 rounded-full flex items-center justify-center"
-                    :style="{ backgroundColor: colors.accentColor + '20' }"
-                  >
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center"
+                    :style="{ backgroundColor: colors.accentColor + '20' }">
                     <i class="fas fa-ban" :style="{ color: colors.accentColor }"></i>
                   </div>
                 </div>
                 <div>
-                  <h3 class="font-semibold mb-1">Fără alcohol</h3>
+                  <h3 class="font-semibold mb-1">Fără alcool</h3>
                   <p class="text-gray-600 dark:text-gray-400">
                     Nu este permis consumul de alcool sau substanțe interzise în timpul
                     evenimentului.
