@@ -9,7 +9,7 @@
       @toggle-dark-mode="toggleDarkMode"
     />
     <HeroSection :colors="currentColors" :darkMode="darkMode" />
-    <main class="container mx-auto px-6 py-12">
+    <main class="container mx-auto px-6 py-18">
       <SectionContainer title="Detalii Eveniment" :colors="currentColors">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <EventDetail
@@ -97,6 +97,7 @@
           />
         </div>
       </SectionContainer>
+      <Footer :currentColors="currentColors" />
     </main>
   </div>
 </template>
@@ -111,6 +112,7 @@ import ActionButton from '@/components/ActionButton.vue'
 import Rule from '@/components/Rule.vue'
 import Navigation from '@/components/Navigation.vue'
 import LocationMap from '@/components/LocationMap.vue'
+import Footer from '@/components/Footer.vue'
 import { eventDetails, timelineSteps, actionButtons, rules, colors } from './data.js'
 
 export default {
@@ -125,6 +127,7 @@ export default {
     Rule,
     LocationMap,
     Navigation,
+    Footer,
   },
   data() {
     return {
