@@ -82,7 +82,7 @@
           Harta e vie. Se mișcă cu tine, cu noi toți.<br />Înscrie-te, vezi ce secții au înscris
           deja alți bicicliști & pune pinul tău pe hartă: îl punem și noi în traseul nostru. 💙
         </p>
-        <LocationMap :key="darkMode" :darkMode="darkMode" />
+        <LocationMap :key="darkMode" :darkMode="darkMode" :colors="currentColors" />
       </SectionContainer>
 
       <SectionContainer title="Reguli de bază" :colors="currentColors">

@@ -1,32 +1,32 @@
 [
   {
-    "id": "1247",
-    "address": "Loc. BUCUREŞTI SECTORUL 6,  Nr. 47-59 Str. Economu Cezarescu nr. 47-59, CP 060754",
-    "latitude": 44.4284823,
-    "longitude": 26.035172
-  },
-  {
-    "id": "835",
-    "address": "Loc. BUCUREŞTI SECTORUL 4,  Strada Izvorul Crişului , Nr. 6 ",
-    "latitude": 44.3852001,
-    "longitude": 26.1047695
-  },
-  {
     "id": "351",
-    "address": "Loc. BUCUREŞTI SECTORUL 2,  Strada Traian , Nr. 165 ",
-    "latitude": 44.4378367,
-    "longitude": 26.1203839
-  },
-  {
-    "id": "1136",
-    "address": "Loc. BUCUREŞTI SECTORUL 6,  Aleea Parva , Nr. 3-5 Ale. Parva Nr. 3-5, CP061941,CP061942",
-    "latitude": 44.4183893,
-    "longitude": 26.0157176
+    "address": "Loc. BUCUREŞTI SECTORUL 2,  Strada Traian , Nr. 165  COLEGIUL ECONOMIC A.D. XENOPOL",
+    "latitude": 44.4381774,
+    "longitude": 26.1202664
   },
   {
     "id": "450",
-    "address": "Loc. BUCUREŞTI SECTORUL 3,  Intrarea Reconstrucţiei , Nr. 6A ",
-    "latitude": 44.4182836,
-    "longitude": 26.1650992
+    "address": "Loc. BUCUREŞTI SECTORUL 3,  Intrarea Reconstrucţiei , Nr. 6A  ŞCOALA GIMNAZIALĂ Nr.86;",
+    "latitude": 44.4231915,
+    "longitude": 26.1478977
+  },
+  {
+    "id": "835",
+    "address": "Loc. BUCUREŞTI SECTORUL 4,  Strada Izvorul Crişului , Nr. 6  Şcoala Gimnazială nr. 129",
+    "latitude": 44.3855236,
+    "longitude": 26.1047336
+  },
+  {
+    "id": "1136",
+    "address": "Loc. BUCUREŞTI SECTORUL 6,  Aleea Parva , Nr. 3-5 Ale. Parva Nr. 3-5, CP061941,CP061942 ŞCOALA GIMNAZIALĂ SF. ANDREI",
+    "latitude": 44.4183266,
+    "longitude": 26.0163547
+  },
+  {
+    "id": "1247",
+    "address": "Loc. BUCUREŞTI SECTORUL 6,  Nr. 47-59 Str. Economu Cezarescu nr. 47-59, CP 060754 COLEGIUL UCECOM SPIRU HARET",
+    "latitude": 44.4402868,
+    "longitude": 26.0553471
   }
 ]

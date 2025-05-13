@@ -1,9 +1,14 @@
-// LocationMap.vue
 <template>
   <div class="flex flex-col h-150">
     <div class="flex flex-1 overflow-hidden">
-      <!-- Map -->
       <div ref="mapContainer" class="flex-1"></div>
+    </div>
+    <div
+      v-if="routeDistance !== null"
+      class="p-2"
+      :style="{ backgroundColor: colors.textColor, color: colors.bgColor }"
+    >
+      <strong>Distanța totală:</strong> {{ formattedDistance }}
     </div>
   </div>
 </template>
@@ -14,9 +19,10 @@ import locations from '@/assets/locations.json'
 
 export default {
   props: {
-    darkMode: {
-      type: Boolean,
-      default: false,
+    darkMode: { type: Boolean, default: false },
+    colors: {
+      type: Object,
+      required: true,
     },
   },
   name: 'LocationMap',
@@ -26,36 +32,31 @@ export default {
       map: null,
       markers: [],
       infoWindow: null,
-      googleMapsLoaded: false,
+      routeDistance: null,
     }
   },
+  computed: {
+    formattedDistance() {
+      if (this.routeDistance === null) return ''
+      // display in km with one decimal
+      return (this.routeDistance / 1000).toFixed(1) + ' km'
+    },
+  },
   mounted() {
-    // Load Google Maps API
     this.loadGoogleMapsAPI()
   },
   methods: {
     loadGoogleMapsAPI() {
-      // Only load if not already loaded
       if (window.google && window.google.maps) {
-        this.googleMapsLoaded = true
         this.initMap()
         return
       }
-
-      // Create a script element to load the Google Maps API
       const apiKey = 'AIzaSyBn5udHvDzJXQV5VD93ag0NBj5cT5E6wUc'
       const script = document.createElement('script')
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=geometry`
       script.async = true
       script.defer = true
-
-      // Initialize map when the API is loaded
-      script.onload = () => {
-        this.googleMapsLoaded = true
-        this.initMap()
-      }
-
-      // Add the script to the document
+      script.onload = () => this.initMap()
       document.head.appendChild(script)
     },
 
@@ -102,30 +103,20 @@ export default {
         ],
         { name: 'Styled Map' }
       )
-      // Calculate the center of all points
       const centerLat =
-        this.locations.reduce((sum, loc) => sum + loc.latitude, 0) / this.locations.length
+        this.locations.reduce((sum, l) => sum + l.latitude, 0) / this.locations.length
       const centerLng =
-        this.locations.reduce((sum, loc) => sum + loc.longitude, 0) / this.locations.length
-
-      // Create the map instance
+        this.locations.reduce((sum, l) => sum + l.longitude, 0) / this.locations.length
       this.map = new google.maps.Map(this.$refs.mapContainer, {
         center: { lat: centerLat, lng: centerLng },
         zoom: 12,
-        streetViewControl: true,
-        fullscreenControl: true,
       })
-
       this.map.mapTypes.set('styled_map', styledMapType)
       this.map.setMapTypeId('styled_map')
-
-      // Create shared info window
       this.infoWindow = new google.maps.InfoWindow()
 
-      // Add markers for each location
-      this.locations.forEach((location) => this.addMarker(location))
-
-      // Fit the map to show all markers
+      this.locations.forEach((loc) => this.addMarker(loc))
+      this.drawRouteWithRoutesAPI()
       this.fitMapToBounds()
     },
 
@@ -133,73 +124,83 @@ export default {
       const marker = new google.maps.Marker({
         position: { lat: location.latitude, lng: location.longitude },
         map: this.map,
-        title: `Location ID: ${location.id}`,
-        animation: google.maps.Animation.DROP,
+        title: `ID: ${location.id}`,
         icon: {
-          path: google.maps.SymbolPath.CIRCLE, // You can also try BACKWARD_CLOSED_ARROW, etc.
-          scale: 12,
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 8,
           fillColor: '#0bd66b',
           fillOpacity: 1,
           strokeWeight: 2,
-          strokeColor: '#000000',
         },
       })
-
+      marker.addListener('click', () => {
+        const content = `
+          <div><strong>ID:</strong> ${location.id}</div>
+          <div>${location.address}</div>
+          <div>${location.latitude.toFixed(6)}, ${location.longitude.toFixed(6)}</div>
+        `
+        this.infoWindow.setContent(content)
+        this.infoWindow.open(this.map, marker)
+      })
       this.markers.push(marker)
-
-      // Create info window content
-      const infoContent = `
-        <div class="max-w-xs">
-          <h3 class="font-bold">Location ID: ${location.id}</h3>
-          <p class="mt-1">${location.address}</p>
-          <p class="mt-2"><strong>Coordinates:</strong> ${location.latitude.toFixed(
-            6
-          )}, ${location.longitude.toFixed(6)}</p>
-        </div>
-      `
-
-      // Add click listener to the marker
-      // marker.addListener('click', () => {
-      //   this.infoWindow.setContent(infoContent)
-      //   this.infoWindow.open(this.map, marker)
-      // })
     },
 
-    centerOnLocation(location) {
-      // Find the corresponding marker
-      const marker = this.markers.find(
-        (m) =>
-          m.getPosition().lat() === location.latitude &&
-          m.getPosition().lng() === location.longitude
-      )
+    async drawRouteWithRoutesAPI() {
+      if (this.locations.length < 2) return
+      const apiKey = 'AIzaSyBn5udHvDzJXQV5VD93ag0NBj5cT5E6wUc'
+      const url = 'https://routes.googleapis.com/directions/v2:computeRoutes'
+      const origin = this.locations[0]
+      const destination = this.locations[this.locations.length - 1]
+      // Build intermediates array per Routes API schema
+      const intermediates = this.locations.slice(1, -1).map((loc) => ({
+        location: { latLng: { latitude: loc.latitude, longitude: loc.longitude } },
+      }))
 
-      if (marker) {
-        // Center map on the marker
-        this.map.panTo(marker.getPosition())
-        this.map.setZoom(15)
+      const body = {
+        origin: {
+          location: { latLng: { latitude: origin.latitude, longitude: origin.longitude } },
+        },
+        destination: {
+          location: {
+            latLng: { latitude: destination.latitude, longitude: destination.longitude },
+          },
+        },
+        intermediates,
+        travelMode: 'DRIVE',
+        routingPreference: 'TRAFFIC_UNAWARE',
+        optimizeWaypointOrder: true,
+      }
 
-        // Open info window for the marker
-        const infoContent = `
-          <div class="max-w-xs">
-            <h3 class="font-bold">Location ID: ${location.id}</h3>
-            <p class="mt-1">${location.address}</p>
-            <p class="mt-2"><strong>Coordinates:</strong> ${location.latitude.toFixed(
-              6
-            )}, ${location.longitude.toFixed(6)}</p>
-          </div>
-        `
-
-        this.infoWindow.setContent(infoContent)
-        this.infoWindow.open(this.map, marker)
+      try {
+        const resp = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Goog-Api-Key': apiKey,
+            'X-Goog-FieldMask':
+              'routes.distanceMeters,routes.duration,routes.polyline.encodedPolyline,routes.optimized_intermediate_waypoint_index',
+          },
+          body: JSON.stringify(body),
+        })
+        const data = await resp.json()
+        if (!data.routes || !data.routes.length) {
+          console.error('Routes API no routes:', data)
+          return
+        }
+        const route = data.routes[0]
+        this.routeDistance = route.distanceMeters
+        const poly = data.routes[0].polyline.encodedPolyline
+        const path = google.maps.geometry.encoding.decodePath(poly)
+        new google.maps.Polyline({ path, strokeColor: '#0bd66b', strokeWeight: 5, map: this.map })
+      } catch (err) {
+        console.error('Routes API error:', err)
       }
     },
 
     fitMapToBounds() {
-      if (this.markers.length > 0) {
-        const bounds = new google.maps.LatLngBounds()
-        this.markers.forEach((marker) => bounds.extend(marker.getPosition()))
-        this.map.fitBounds(bounds)
-      }
+      const bounds = new google.maps.LatLngBounds()
+      this.markers.forEach((m) => bounds.extend(m.getPosition()))
+      this.map.fitBounds(bounds)
     },
   },
 }
