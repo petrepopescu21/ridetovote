@@ -57,12 +57,14 @@ export const actionButtons = [
     text: 'ÎNSCRIE-TE AICI',
     icon: 'fas fa-user-plus',
     url: 'https://docs.google.com/forms/d/e/1FAIpQLSeiN0q8f4bmPmn1rGiltKxN0Qdd2donwy4vYaVxYQrhf-LQCw/viewform',
+    disabled: false,
   },
   {
     type: 'secondary',
-    text: 'VEZI TRASEUL',
+    text: 'VEZI TRASEUL (ÎN CURÂND)',
     icon: 'fas fa-route',
     url: 'https://goo.gl/maps/YourPlannedRouteLink',
+    disabled: true,
   },
 ]
 

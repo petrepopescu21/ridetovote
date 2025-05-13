@@ -1,6 +1,7 @@
 // ActionButton.vue - Reusable button component with primary/secondary styles
 <template>
   <a
+    :class="disabled ? 'disabled' : ''"
     :href="url"
     class="inline-block py-4 px-8 rounded-lg font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
     :style="buttonStyle"
@@ -19,6 +20,10 @@ export default {
         return ['primary', 'secondary'].includes(value)
       },
       required: true,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
     text: {
       type: String,
@@ -54,3 +59,10 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+</style>

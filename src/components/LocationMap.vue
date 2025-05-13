@@ -4,23 +4,6 @@
     <div class="flex flex-1 overflow-hidden">
       <!-- Map -->
       <div ref="mapContainer" class="flex-1"></div>
-
-      <!-- Sidebar -->
-      <!-- <div class="w-72 bg-gray-50 p-4 overflow-y-auto shadow-md">
-        <h2 class="text-lg font-semibold mb-3">Locations</h2> -->
-
-      <!-- Location List -->
-      <!-- <div>
-          <div
-            v-for="location in locations"
-            :key="location.id"
-            class="p-3 mb-2 bg-white rounded shadow-sm cursor-pointer hover:bg-gray-100 transition-colors"
-            @click="centerOnLocation(location)"
-          >
-            <div class="font-medium text-blue-600">Sectia {{ location.id }}</div>
-          </div>
-        </div>
-      </div> -->
     </div>
   </div>
 </template>
@@ -80,6 +63,22 @@ export default {
       const styledMapType = new google.maps.StyledMapType(
         [
           {
+            elementType: 'labels.text',
+            stylers: [
+              {
+                visibility: 'off',
+              },
+            ],
+          },
+          {
+            featureType: 'administrative',
+            stylers: [
+              {
+                visibility: 'off',
+              },
+            ],
+          },
+          {
             featureType: 'all',
             elementType: 'all',
             stylers: [
@@ -136,6 +135,14 @@ export default {
         map: this.map,
         title: `Location ID: ${location.id}`,
         animation: google.maps.Animation.DROP,
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE, // You can also try BACKWARD_CLOSED_ARROW, etc.
+          scale: 12,
+          fillColor: '#0bd66b',
+          fillOpacity: 1,
+          strokeWeight: 2,
+          strokeColor: '#000000',
+        },
       })
 
       this.markers.push(marker)

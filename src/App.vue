@@ -68,6 +68,7 @@
             :text="button.text"
             :icon="button.icon"
             :url="button.url"
+            :disabled="button.disabled"
             :colors="currentColors"
           />
         </div>
