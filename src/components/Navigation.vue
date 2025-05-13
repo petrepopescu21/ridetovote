@@ -14,6 +14,11 @@
         <button @click="$emit('toggle-dark-mode')" class="p-2 rounded-full hover:bg-opacity-20">
           <i class="fas" :class="darkMode ? 'fa-sun' : 'fa-moon'"></i>
         </button>
+        <a href="https://github.com/petrepopescu21/ridetovote" target="_blank">
+          <button class="p-2 rounded-full hover:bg-opacity-20">
+            <i class="fa-brands fa-github"></i>
+          </button>
+        </a>
       </div>
     </div>
   </nav>
