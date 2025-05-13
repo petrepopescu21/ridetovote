@@ -30,6 +30,12 @@
 import locations from '@/assets/locations.json'
 
 export default {
+  props: {
+    darkMode: {
+      type: Boolean,
+      default: false,
+    },
+  },
   name: 'LocationMap',
   data() {
     return {
@@ -71,6 +77,32 @@ export default {
     },
 
     initMap() {
+      const styledMapType = new google.maps.StyledMapType(
+        [
+          {
+            featureType: 'all',
+            elementType: 'all',
+            stylers: [
+              {
+                invert_lightness: this.darkMode,
+              },
+              {
+                saturation: 10,
+              },
+              {
+                lightness: 30,
+              },
+              {
+                gamma: 0.5,
+              },
+              {
+                hue: '#F2E9FF',
+              },
+            ],
+          },
+        ],
+        { name: 'Styled Map' }
+      )
       // Calculate the center of all points
       const centerLat =
         this.locations.reduce((sum, loc) => sum + loc.latitude, 0) / this.locations.length
@@ -81,10 +113,12 @@ export default {
       this.map = new google.maps.Map(this.$refs.mapContainer, {
         center: { lat: centerLat, lng: centerLng },
         zoom: 12,
-        mapTypeControl: true,
         streetViewControl: true,
         fullscreenControl: true,
       })
+
+      this.map.mapTypes.set('styled_map', styledMapType)
+      this.map.setMapTypeId('styled_map')
 
       // Create shared info window
       this.infoWindow = new google.maps.InfoWindow()
@@ -97,7 +131,6 @@ export default {
     },
 
     addMarker(location) {
-      // Create a marker for the location
       const marker = new google.maps.Marker({
         position: { lat: location.latitude, lng: location.longitude },
         map: this.map,

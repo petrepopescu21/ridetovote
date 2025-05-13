@@ -32,6 +32,7 @@ export const timelineSteps = [
     description:
       'Ne ocupăm noi de traseu! Vom crea o rută care să te aducă în siguranță la secția ta de votare, ținând cont de toți participanții.<br />Acolo te așteptăm să votezi, apoi pornim către următoarea secție. It is about the journey together.',
     position: 'right',
+    accent: 'secondaryColor',
   },
   {
     number: '3',
@@ -39,6 +40,7 @@ export const timelineSteps = [
     description:
       'Pe 18 mai ne vedem la punctul de întâlnire și pornim împreună pe biciclete, într-o călătorie spre secțiile de votare.',
     position: 'left',
+    accent: 'secondaryColor',
   },
   {
     number: '4',

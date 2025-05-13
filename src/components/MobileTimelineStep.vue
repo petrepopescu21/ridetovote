@@ -4,13 +4,13 @@
     <div class="mr-4">
       <div
         class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shadow-md"
-        :style="{ backgroundColor: colors.primaryColor }"
+        :style="{ backgroundColor: accentColor, color: numberColor }"
       >
         {{ number }}
       </div>
     </div>
     <div>
-      <h3 class="text-xl font-semibold mb-2" :style="{ color: colors.primaryColor }">
+      <h3 class="text-xl font-semibold mb-2" :style="{ color: accentColor }">
         {{ title }}
       </h3>
       <p :style="{ color: colors.textColor }" v-html="description"></p>
@@ -20,6 +20,22 @@
 
 <script>
 export default {
+  computed: {
+    accentColor() {
+      if (this.number == '1' || this.number == '4') {
+        return this.colors.primaryColor
+      } else {
+        return this.colors.secondaryColor
+      }
+    },
+    numberColor() {
+      if (this.number == '1' || this.number == '4') {
+        return this.colors.textColor
+      } else {
+        return this.colors.bgColor
+      }
+    },
+  },
   name: 'MobileTimelineStep',
   props: {
     number: {

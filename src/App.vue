@@ -40,6 +40,7 @@
               :description="step.description"
               :position="step.position"
               :colors="currentColors"
+              :accentColor="step.accentColor ? step.accentColor : 'primary'"
             />
           </div>
         </div>
@@ -53,6 +54,7 @@
             :title="step.title"
             :description="step.description"
             :colors="currentColors"
+            :accentColor="step.accentColor ? step.accentColor : 'primary'"
           />
         </div>
       </SectionContainer>
@@ -79,7 +81,7 @@
           Harta e vie. Se mișcă cu tine, cu noi toți.<br />Înscrie-te, vezi ce secții au înscris
           deja alți bicicliști & pune pinul tău pe hartă: îl punem și noi în traseul nostru. 💙
         </p>
-        <LocationMap />
+        <LocationMap :key="darkMode" :darkMode="darkMode" />
       </SectionContainer>
 
       <SectionContainer title="Reguli de bază" :colors="currentColors">

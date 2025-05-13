@@ -3,7 +3,7 @@
   <div class="flex items-center">
     <!-- Left side content -->
     <div class="flex-1 pr-8 text-right" v-if="position === 'left'">
-      <h3 class="text-xl font-semibold mb-2" :style="{ color: colors.primaryColor }">
+      <h3 class="text-xl font-semibold mb-2" :style="{ color: accentColor }">
         {{ title }}
       </h3>
       <p class="dark:text-gray-300" :style="{ color: colors.textColor }" v-html="description"></p>
@@ -14,7 +14,7 @@
     <!-- Circle with number -->
     <div
       class="absolute left-1/2 transform -translate-x-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold shadow-xl"
-      :style="{ backgroundColor: colors.primaryColor }"
+      :style="{ backgroundColor: accentColor, color: numberColor }"
     >
       {{ number }}
     </div>
@@ -23,7 +23,7 @@
     <div class="flex-1 pl-8 text-left" v-if="position === 'left'"></div>
     <!-- Right side content -->
     <div class="flex-1 pl-8 text-left" v-else>
-      <h3 class="text-xl font-semibold mb-2" :style="{ color: colors.primaryColor }">
+      <h3 class="text-xl font-semibold mb-2" :style="{ color: accentColor }">
         {{ title }}
       </h3>
       <p class="dark:text-gray-300" :style="{ color: colors.textColor }" v-html="description"></p>
@@ -32,9 +32,23 @@
 </template>
 
 <script>
-import { colors } from '@/data'
-
 export default {
+  computed: {
+    accentColor() {
+      if (this.number == '1' || this.number == '4') {
+        return this.colors.primaryColor
+      } else {
+        return this.colors.secondaryColor
+      }
+    },
+    numberColor() {
+      if (this.number == '1' || this.number == '4') {
+        return this.colors.textColor
+      } else {
+        return this.colors.bgColor
+      }
+    },
+  },
   name: 'TimelineStep',
   props: {
     number: {
