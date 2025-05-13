@@ -191,7 +191,7 @@ export default {
         this.routeDistance = route.distanceMeters
         const poly = data.routes[0].polyline.encodedPolyline
         const path = google.maps.geometry.encoding.decodePath(poly)
-        new google.maps.Polyline({ path, strokeColor: '#0bd66b', strokeWeight: 5, map: this.map })
+        new google.maps.Polyline({ path, strokeColor: '#0bd66b', strokeWeight: 2, map: this.map })
       } catch (err) {
         console.error('Routes API error:', err)
       }
