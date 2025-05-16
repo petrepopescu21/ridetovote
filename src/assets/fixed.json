@@ -1,0 +1,14 @@
+{
+    "start": {
+        "id": "Awake Coffee",
+        "address": "Bulevardul Pache Protopopescu 34",
+        "latitude": 44.4388448,
+        "longitude": 26.1209208
+    },
+    "end": {
+        "id": "Umlaut",
+        "address": "Strada Lev Nicolaevici Tolstoi 4b",
+        "latitude": 44.4653685,
+        "longitude": 26.089494
+    }
+}

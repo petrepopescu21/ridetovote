@@ -16,6 +16,7 @@
 <script>
 // Import your locations data - this will be replaced at build time
 import locations from '@/assets/locations.json'
+import fixed from '@/assets/fixed.json'
 
 export default {
   props: {
@@ -29,6 +30,7 @@ export default {
   data() {
     return {
       locations: locations,
+      fixedLocations: fixed,
       map: null,
       markers: [],
       infoWindow: null,
@@ -119,7 +121,32 @@ export default {
       this.drawRouteWithRoutesAPI()
       this.fitMapToBounds()
     },
+    addFixedMarker(location) {
+      const marker = new google.maps.Marker({
+        position: { lat: location.latitude, lng: location.longitude },
+        map: this.map,
+        title: `ID: ${location.id}`,
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 8,
+          fillColor: '#ffffff',
+          fillOpacity: 0.8,
+          strokeWeight: 2,
+        },
+      })
 
+      marker.addListener('click', () => {
+        const content = `
+          <div>${location.id}</div>
+          <div>${location.address}</div>
+          <div>${location.latitude.toFixed(6)}, ${location.longitude.toFixed(6)}</div>
+        `
+        this.infoWindow.setContent(content)
+        this.infoWindow.open(this.map, marker)
+      })
+
+      this.markers.push(marker)
+    },
     addMarker(location) {
       const marker = new google.maps.Marker({
         position: { lat: location.latitude, lng: location.longitude },
@@ -135,7 +162,7 @@ export default {
       })
       marker.addListener('click', () => {
         const content = `
-          <div><strong>ID:</strong> ${location.id}</div>
+          <div><strong>Sectia de vot nr. </strong> ${location.id}</div>
           <div>${location.address}</div>
           <div>${location.latitude.toFixed(6)}, ${location.longitude.toFixed(6)}</div>
         `
@@ -149,10 +176,14 @@ export default {
       if (this.locations.length < 2) return
       const apiKey = 'AIzaSyBn5udHvDzJXQV5VD93ag0NBj5cT5E6wUc'
       const url = 'https://routes.googleapis.com/directions/v2:computeRoutes'
-      const origin = this.locations[0]
-      const destination = this.locations[this.locations.length - 1]
+      const origin = this.fixedLocations.start
+      const destination = this.fixedLocations.end
+
+      this.addFixedMarker(origin)
+      this.addFixedMarker(destination)
+
       // Build intermediates array per Routes API schema
-      const intermediates = this.locations.slice(1, -1).map((loc) => ({
+      const intermediates = this.locations.map((loc) => ({
         location: { latLng: { latitude: loc.latitude, longitude: loc.longitude } },
       }))
 

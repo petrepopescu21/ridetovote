@@ -9,12 +9,12 @@ export const eventDetails = [
     icon: 'fas fa-map-marker-alt',
     title: 'Punct de întâlnire',
     description:
-      'Punctul de întâlnire va fi anunțat cu câteva zile înainte de eveniment. Revino vineri aici pentru detalii.',
+      'Punctul de întâlnire este la Awake Coffee, pe bulevardul Pache Protopopescu, nr. 34.',
   },
   {
     icon: 'fas fa-clock',
     title: 'Ora',
-    description: 'La fel si ora de întâlnire. Vom updata pagina.',
+    description: ' Ne intalnim la ora 12:00.',
   },
 ]
 
