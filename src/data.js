@@ -9,7 +9,7 @@ export const eventDetails = [
     icon: 'fas fa-map-marker-alt',
     title: 'Punct de întâlnire',
     description:
-      'Punctul de întâlnire este la Awake Coffee, pe bulevardul Pache Protopopescu, nr. 34.',
+      'Punctul de întâlnire este la Awake Coffee, pe bulevardul Pache Protopopescu, nr. 34. La final sărbătorim la Umlaut, pe strada Lev Tolstoi nr. 4',
   },
   {
     icon: 'fas fa-clock',
